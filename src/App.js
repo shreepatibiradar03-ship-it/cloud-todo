@@ -17,12 +17,13 @@ function App() {
   };
 
   const calculate = () => {
-    try {
-      setInput(eval(input).toString());
-    } catch {
-      setInput("Error");
-    }
-  };
+  try {
+    const result = Function("return " + input)();
+    setInput(result.toString());
+  } catch {
+    setInput("Error");
+  }
+};
 
   return (
     <div style={styles.container}>
