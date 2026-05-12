@@ -1,6 +1,5 @@
 
-import { useState } from "react";
-
+import { evaluate } from "mathjs";
 function App() {
   const [input, setInput] = useState("");
 
@@ -18,8 +17,7 @@ function App() {
 
   const calculate = () => {
   try {
-    const result = Function("return " + input)();
-    setInput(result.toString());
+    setInput(evaluate(input).toString());
   } catch {
     setInput("Error");
   }
