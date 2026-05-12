@@ -17,12 +17,18 @@ function App() {
   };
 
   const calculate = () => {
-    try {
-      setInput(evaluate(input).toString());
-    } catch {
-      setInput("Error");
-    }
-  };
+  try {
+    let expression = input;
+
+    expression = expression.replace(/sin\(([^)]+)\)/g, "sin($1 deg)");
+    expression = expression.replace(/cos\(([^)]+)\)/g, "cos($1 deg)");
+    expression = expression.replace(/tan\(([^)]+)\)/g, "tan($1 deg)");
+
+    setInput(evaluate(expression).toString());
+  } catch {
+    setInput("Error");
+  }
+};
 
   return (
     <div style={styles.container}>
@@ -32,29 +38,39 @@ function App() {
         <div style={styles.screen}>{input || "0"}</div>
 
         <div style={styles.grid}>
-          <button style={styles.btn} onClick={clear}>C</button>
-          <button style={styles.btn} onClick={backspace}>⌫</button>
-          <button style={styles.btn} onClick={() => handleClick("/")}>/</button>
-          <button style={styles.btn} onClick={() => handleClick("*")}>*</button>
+  <button style={styles.btn} onClick={clear}>C</button>
+  <button style={styles.btn} onClick={backspace}>⌫</button>
+  <button style={styles.btn} onClick={() => handleClick("/")}>/</button>
+  <button style={styles.btn} onClick={() => handleClick("*")}>*</button>
 
-          <button style={styles.btn} onClick={() => handleClick("7")}>7</button>
-          <button style={styles.btn} onClick={() => handleClick("8")}>8</button>
-          <button style={styles.btn} onClick={() => handleClick("9")}>9</button>
-          <button style={styles.btn} onClick={() => handleClick("-")}>-</button>
+  <button style={styles.btn} onClick={() => handleClick("sin(")}>sin</button>
+  <button style={styles.btn} onClick={() => handleClick("cos(")}>cos</button>
+  <button style={styles.btn} onClick={() => handleClick("tan(")}>tan</button>
+  <button style={styles.btn} onClick={() => handleClick("sqrt(")}>√</button>
 
-          <button style={styles.btn} onClick={() => handleClick("4")}>4</button>
-          <button style={styles.btn} onClick={() => handleClick("5")}>5</button>
-          <button style={styles.btn} onClick={() => handleClick("6")}>6</button>
-          <button style={styles.btn} onClick={() => handleClick("+")}>+</button>
+  <button style={styles.btn} onClick={() => handleClick("log(")}>log</button>
+  <button style={styles.btn} onClick={() => handleClick("^")}>^</button>
+  <button style={styles.btn} onClick={() => handleClick("(")}>(</button>
+  <button style={styles.btn} onClick={() => handleClick(")")}>)</button>
 
-          <button style={styles.btn} onClick={() => handleClick("1")}>1</button>
-          <button style={styles.btn} onClick={() => handleClick("2")}>2</button>
-          <button style={styles.btn} onClick={() => handleClick("3")}>3</button>
-          <button style={styles.equal} onClick={calculate}>=</button>
+  <button style={styles.btn} onClick={() => handleClick("7")}>7</button>
+  <button style={styles.btn} onClick={() => handleClick("8")}>8</button>
+  <button style={styles.btn} onClick={() => handleClick("9")}>9</button>
+  <button style={styles.btn} onClick={() => handleClick("-")}>-</button>
 
-          <button style={styles.zero} onClick={() => handleClick("0")}>0</button>
-          <button style={styles.btn} onClick={() => handleClick(".")}>.</button>
-        </div>
+  <button style={styles.btn} onClick={() => handleClick("4")}>4</button>
+  <button style={styles.btn} onClick={() => handleClick("5")}>5</button>
+  <button style={styles.btn} onClick={() => handleClick("6")}>6</button>
+  <button style={styles.btn} onClick={() => handleClick("+")}>+</button>
+
+  <button style={styles.btn} onClick={() => handleClick("1")}>1</button>
+  <button style={styles.btn} onClick={() => handleClick("2")}>2</button>
+  <button style={styles.btn} onClick={() => handleClick("3")}>3</button>
+  <button style={styles.equal} onClick={calculate}>=</button>
+
+  <button style={styles.zero} onClick={() => handleClick("0")}>0</button>
+  <button style={styles.btn} onClick={() => handleClick(".")}>.</button>
+</div>
       </div>
     </div>
   );
