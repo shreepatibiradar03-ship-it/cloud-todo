@@ -63,67 +63,74 @@ function App() {
 const styles = {
   container: {
     height: "100vh",
-    background: "#346d31",
+    background: "linear-gradient(to right, #1d4350, #346d31)",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    padding: "15px",
   },
 
   calculator: {
     background: "#2c2c2c",
     padding: "20px",
     borderRadius: "20px",
-    width: "260px",
-    boxShadow: "0px 0px 20px rgba(0,0,0,0.5)",
+    width: "90%",
+    maxWidth: "380px",
+    boxShadow: "0px 0px 25px rgba(0,0,0,0.5)",
   },
 
   title: {
     color: "white",
     textAlign: "center",
+    marginBottom: "15px",
+    fontSize: "28px",
   },
 
   screen: {
     background: "#000",
     color: "#00ff88",
-    fontSize: "28px",
-    padding: "15px",
-    borderRadius: "10px",
+    fontSize: "32px",
+    padding: "18px",
+    borderRadius: "12px",
     textAlign: "right",
     marginBottom: "15px",
-    minHeight: "40px",
+    minHeight: "50px",
+    overflowX: "auto",
+    wordWrap: "break-word",
   },
 
   grid: {
     display: "grid",
     gridTemplateColumns: "repeat(4, 1fr)",
-    gap: "10px",
+    gap: "12px",
   },
 
   btn: {
-    padding: "15px",
-    fontSize: "18px",
-    borderRadius: "10px",
+    padding: "18px",
+    fontSize: "20px",
+    borderRadius: "12px",
     border: "none",
     cursor: "pointer",
     background: "#444",
     color: "white",
+    transition: "0.2s",
   },
 
   equal: {
-    padding: "15px",
-    fontSize: "18px",
-    borderRadius: "10px",
+    padding: "18px",
+    fontSize: "20px",
+    borderRadius: "12px",
     border: "none",
     cursor: "pointer",
     background: "#00c853",
     color: "white",
   },
 
-  zero: {
+    zero: {
     gridColumn: "span 2",
-    padding: "15px",
-    fontSize: "18px",
-    borderRadius: "10px",
+    padding: "18px",
+    fontSize: "20px",
+    borderRadius: "12px",
     border: "none",
     cursor: "pointer",
     background: "#444",
